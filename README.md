@@ -2,6 +2,7 @@ nicoMethod
 ==========
 
 デスクトップ画面上にコメント
+  
+[WPFでニコニコメソッド](http://zoetrope.hatenablog.jp/entries/2007/09/09 "廻る技術の覗き穴")をベースにUDPで通信し、ニコニコみたいに表示できるようにしました。
 
-http://zoetrope.hatenablog.jp/entries/2007/09/09
-をベースにUDPで通信し、ニコニコみたいに表示できるようにしました。
+チャットみたいにすると面白いかも
