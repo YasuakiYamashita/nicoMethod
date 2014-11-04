@@ -1,0 +1,17 @@
+﻿<Window x:Class="nicoViewer.log"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="log" Height="300" Width="300"
+        ResizeMode="NoResize">
+    <Grid>
+        <ListView Name="logs" Height="270" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding [0]}" Width="50" />
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding [1]}" Width="242"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

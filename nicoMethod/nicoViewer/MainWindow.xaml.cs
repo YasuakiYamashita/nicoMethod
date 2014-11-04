@@ -36,6 +36,12 @@ namespace nicoViewer
         // 表示速度
         private int moveCommentTime = 5000;
 
+        // 受信アドレス
+        private IPAddress sendIP = IPAddress.Parse("239.0.0.34");
+
+        // ログ画面
+        private log logWindow = null;
+
         public MainWindow(int port, int comTime)
         {
             InitializeComponent();
@@ -62,6 +68,21 @@ namespace nicoViewer
 
             fontSizeMap.Add("big", 200.0);
             fontSizeMap.Add("small", 50.0);
+
+            // ログのウインドウ
+            logWindow = new log();
+            logWindow.Show();
+
+        }
+
+        // 終了イベント
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(logWindow != null)
+            {
+                logWindow.Close();
+                logWindow = null;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -119,7 +140,7 @@ namespace nicoViewer
 
                 // テキストの位置を指定
                 verticalPosition += (int)fontsize;
-                if (verticalPosition >= this.Height) verticalPosition = 0;
+                if (verticalPosition + (int)fontsize >= this.Height) verticalPosition = 0;
                 TranslateTransform transform = new TranslateTransform(this.Width, verticalPosition);
 
                  // テキストのアニメーション
@@ -164,8 +185,11 @@ namespace nicoViewer
                 return;
             }
 
+            // マルチキャストグループに参加
+            client.JoinMulticastGroup(sendIP);
+
             // 送信元。任意のIPアドレス、任意のポートから許可
-            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint remoteEP = new IPEndPoint(sendIP, 0);
 
             while (true)
             {
@@ -174,6 +198,8 @@ namespace nicoViewer
 
                 // バイト配列から ASCII 文字列に変換して表示
                 MoveMessage(Encoding.UTF8.GetString(res));
+
+                logWindow.add_log(Encoding.UTF8.GetString(res));
             }
         }
     }

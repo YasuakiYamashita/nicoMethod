@@ -32,6 +32,15 @@ namespace nicoViewer
             Stop.IsEnabled = false;
         }
 
+        public void Setting_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (mainWindow != null)
+            {
+                mainWindow.Close();
+                mainWindow = null;
+            }
+        }
+
         // 起動ボタンが押された場合
         private void Button_Click(object sender, RoutedEventArgs e)
         {

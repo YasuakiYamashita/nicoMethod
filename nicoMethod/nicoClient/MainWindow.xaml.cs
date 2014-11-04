@@ -25,6 +25,9 @@ namespace nicoServer
         // 送信元とするポート
         private const int localPort = 1234;
 
+        // 送信アドレス
+        private IPAddress sendIP = IPAddress.Parse("239.0.0.34");
+
         // UDP クライアント
         private UdpClient client = new UdpClient(localPort);
 
@@ -34,8 +37,12 @@ namespace nicoServer
             comment.Text = "";
 
             // UDP パケットの送信先
-            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5678);
+            IPEndPoint remoteEP = new IPEndPoint(sendIP, 5678);
 
+            // マルチキャストグループに追加
+            client.JoinMulticastGroup(sendIP);
+
+            // コネクト
             client.Connect(remoteEP);
 
         }

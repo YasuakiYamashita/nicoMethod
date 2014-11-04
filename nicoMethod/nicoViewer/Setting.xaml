@@ -1,7 +1,10 @@
 ﻿<Window x:Class="nicoViewer.Setting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Setting" Height="135" Width="219">
+        Title="Setting" Height="135" Width="219"
+        ResizeMode="NoResize"
+        Closing="Setting_Closing"
+        >
     <Grid>
         <Button Content="起動" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Name="Start"/>
         <TextBox Name="port" HorizontalAlignment="Left" Height="23" Margin="109,10,0,0" TextWrapping="Wrap" Text="5678" VerticalAlignment="Top" Width="80" PreviewKeyDown="NumOnly_PreviewKeyDown" TextChanged="NumOnly_Changed"/>
