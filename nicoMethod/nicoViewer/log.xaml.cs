@@ -32,7 +32,10 @@ namespace nicoViewer
 
             // ログ追加
             logs.Dispatcher.BeginInvoke(new Action(() => {
+                // ログ追加
                 int id = logs.Items.Add(new string[] { time, commnet });
+
+                // スクロールさせる
                 logs.ScrollIntoView(logs.Items[logs.Items.Count - 1]);
             }));
 

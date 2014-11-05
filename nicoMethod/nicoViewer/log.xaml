@@ -4,7 +4,7 @@
         Title="log" Height="300" Width="300"
         ResizeMode="NoResize">
     <Grid>
-        <ListView Name="logs" Height="270" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ListView Name="logs" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Time" DisplayMemberBinding="{Binding [0]}" Width="50" />

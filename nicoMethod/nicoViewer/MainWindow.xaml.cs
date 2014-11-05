@@ -189,7 +189,7 @@ namespace nicoViewer
             client.JoinMulticastGroup(sendIP);
 
             // 送信元。任意のIPアドレス、任意のポートから許可
-            IPEndPoint remoteEP = new IPEndPoint(sendIP, 0);
+            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
 
             while (true)
             {
